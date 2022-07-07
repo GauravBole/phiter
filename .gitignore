@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Terraform
+/Terraform/.terraform
+/terraform/.terraform.lock.hcl
+
+
+# Aws 
+AWSCLIV2.pkg
