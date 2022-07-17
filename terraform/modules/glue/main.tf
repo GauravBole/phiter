@@ -5,10 +5,9 @@ resource "aws_glue_job" "glue_job" {
   worker_type       = var.worker_type
   number_of_workers = var.number_of_workers
   max_retries       = var.max_retries
-
   command {
     python_version  = 3
-    script_location = ""
+    script_location = local.script_location
   }
 
   default_arguments = merge({
