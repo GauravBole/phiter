@@ -42,6 +42,9 @@ data "aws_iam_policy_document" "glue_policy" {
 
 }
 
+output "role_value" {
+  value = data.aws_iam_policy_document.glue_assume_role.json
+}
 
 resource "aws_iam_role" "glue_service" {
   name               = format("Glue_%s_policy", var.project_name)

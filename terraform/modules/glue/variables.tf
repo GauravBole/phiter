@@ -7,7 +7,7 @@ variable "code_bucket" {
 }
 
 variable "code_s3_prefix" {
-
+  default = "phiter"
 }
 
 variable "default_arguments" {
@@ -43,12 +43,12 @@ variable "number_of_workers" {
 }
 
 variable "region_name" {
-  default = "eu-west-1"
+  default = "us-east-1"
 }
 
 
 variable "project_name" {
-
+  default = "phiter-demo"
 }
 
 variable "script_file" {
