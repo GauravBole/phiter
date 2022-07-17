@@ -1,14 +1,13 @@
 resource "aws_glue_job" "glue_job" {
   name     = var.job_name
   role_arn = var.glue_role_arn
-
+ 
   worker_type       = var.worker_type
   number_of_workers = var.number_of_workers
   max_retries       = var.max_retries
-
   command {
     python_version  = 3
-    script_location = ""
+    script_location = "s3://phiter-demo/first_glue_job.py"
   }
 
   default_arguments = merge({
