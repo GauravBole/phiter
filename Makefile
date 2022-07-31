@@ -1,5 +1,6 @@
 init:
 	terraform -chdir=terraform/ init
+	python src/helper/package_manager.py                       
 
 plan:
 	terraform -chdir=terraform/ plan -var-file="config/terraform.tfvars"
