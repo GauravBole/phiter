@@ -13,5 +13,7 @@ module "glue_etl_job" {
         "--account_id" = var.aws_account_id
         "--athena_database" = var.athena_database
         "s3_bucket" = var.code_bucket
+        "--additional-python-modules" = "pydantic"
+        "--extra-py-files" = "s3://phiter-packages/glue.zip"
     }
 }
