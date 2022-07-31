@@ -135,3 +135,5 @@ dmypy.json
 
 # Aws 
 AWSCLIV2.pkg
+
+.DS_Store
