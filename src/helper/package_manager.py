@@ -25,7 +25,7 @@ class PhiterPackages:
 
     def copy_zip_to_s3(self, bucket_name:str):
         zip_path = os.path.join(os.getcwd(), "botobeak.zip")
-        s3 = boto3.resource('s3', aws_access_key_id="AKIAT4636MDWARSBDT6F", aws_secret_access_key="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")
+        s3 = boto3.resource('s3', aws_access_key_id="", aws_secret_access_key="")
         s3.Bucket(bucket_name).upload_file(zip_path, "packages/botobeak.zip")
 
 
