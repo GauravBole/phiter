@@ -1,3 +1,3 @@
 locals {
-  script_location = "s3://phiter-demo/first_glue_job.py"
+  script_location = "s3://phiter/scripts/first_glue_job.py"
 }
