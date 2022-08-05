@@ -8,7 +8,7 @@ resource "aws_glue_job" "glue_job" {
   max_retries       = var.max_retries
   command {
     python_version  = 3
-    script_location = local.script_location
+    script_location = format("s3://%s/scripts/%s", var.code_bucket,var.script_file)
   }
 
   default_arguments = merge({
