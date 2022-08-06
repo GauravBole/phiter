@@ -1,7 +1,11 @@
+from ast import arg
 import os
 from shutil import make_archive
 import shutil
 import zipfile
+import sys
+import argparse
+
 
 import boto3
 
@@ -39,13 +43,30 @@ class PhiterPackages:
         s3 = boto3.resource('s3', aws_access_key_id="", aws_secret_access_key="")
         s3.Bucket(bucket_name).upload_file(zip_path, "packages/botobeak.zip")
 
+    def copy_script_to_s3(self, bucket_name:str, script_folder:str):
+        s3 = boto3.resource('s3', aws_access_key_id="", aws_secret_access_key="")
+        bucket = s3.Bucket(bucket_name)
+        for subdir, _, files in os.walk(os.path.join(os.getcwd(), script_folder)):
+            for file in files:
+                full_path = os.path.join(subdir, file)
+                bucket.upload_file(full_path, f"scripts/{file}")
+
+
 
 if __name__ == "__main__":
     phiter = PhiterPackages()
-    phiter.download_repo()
-    phiter.zip_folder()
-    phiter.copy_zip_to_s3("phiter")
-    shutil.rmtree(os.getcwd())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--Scripts", help = "Show Output")
+    args = parser.parse_args()
+
+    if args.Scripts:
+        phiter.copy_script_to_s3(bucket_name="phiter", script_folder=args.Scripts)
+    else:
+        phiter.download_repo()
+        phiter.zip_folder()
+        phiter.copy_zip_to_s3("phiter")
+        shutil.rmtree(os.getcwd())
+    
 
 
     

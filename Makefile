@@ -7,3 +7,6 @@ plan:
 
 apply:
 	terraform -chdir=terraform/ apply -var-file="config/terraform.tfvars" -auto-approve 
+
+load_scripts:
+	python src/helper/package_manager.py --Scripts src/scripts
